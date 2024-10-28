@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #2C2C2C; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    margin: -20px 0 50px;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+    color: orange; /* Orange for headings */
+}
+
+h2 {
+    text-align: center;
+    color: #FFA500; /* Light orange for subheadings */
+    margin-top: 50px;
+}
+
+p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    margin: 20px 0 30px;
+    color: white;
+}
+
+/* Navigation Bar */
+nav {
+    height: 60px;
+    width: 100%;
+    background-color: black; /* Black background */
+    color: orange; /* Orange text color */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+}
+
+nav .logo {
+    flex: 1; /* Pushes logo to the left */
+}
+
+nav .logo img {
+    height: 50px; /* Make the logo bigger */
+    padding: 0 15px; /* Space around the logo */
+}
+
+/* Remove hover effect specifically for the logo */
+nav .logo a {
+    text-decoration: none; /* Remove underline */
+}
+
+nav .logo a:hover {
+    background-color: transparent; /* Ensure no background change */
+    color: inherit; /* Inherit color to avoid changes */
+}
+
+nav a {
+    display: inline-block;
+    width: auto; /* Adjust width based on content */
+    padding: 15px 20px;
+    text-align: center;
+    color: orange; /* Orange text for nav links */
+    font-weight: bold;
+}
+
+span {
+    font-size: 12px;
+    color: #FFA500; /* Light orange */
+}
+
+a {
+    color: #FFA500; /* Light orange for links */
+    font-size: 14px;
+    text-decoration: none;
+    margin: 15px 0;
+}
+
+a:hover {
+    color: #FF4500; /* Darker orange for hover effect */
+}
+
+button {
+    border-radius: 20px;
+    border: 1px solid #FF4500; /* Darker orange for border */
+    background-color: #FF4500; /* Darker orange */
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+}
+
+button:hover {
+    background-color: white; /* White background on hover */
+    color: #FF4500; /* Darker orange text on hover */
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:focus {
+    outline: none;
+}
+
+button.ghost {
+    background-color: white; /* White background for ghost button */
+    color: #FF4500; /* Darker orange text */
+}
+
+button.ghost:hover {
+    background-color: #FF4500; /* Darker orange on hover */
+    color: #FFFFFF; /* White text color on hover */
+}
+
+form {
+    background-color: #FFFFFF; /* White background for forms */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+}
+
+input {
+    background-color: #eee; /* Light grey background for inputs */
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff; /* White background for container */
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    max-width: 100%;
+    min-height: 350px;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+        z-index: 1;
+    }
+    20% {
+        opacity: 0;
+        z-index: 1;
+    }
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background: #FF4500; /* Darker orange for background */
+    background: -webkit-linear-gradient(to right, #FF4500, #FFA500); /* Gradient color */
+    background: linear-gradient(to right, #FF4500, #FFA500); /* Gradient color */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0); /* Fixed property name */
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+footer {
+    background-color: black; /* Black background for footer */
+    color: orange; /* Orange text color */
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+.overlay-left h1,
+.overlay-right h1 {
+    color: #FFFFFF; /* White color for the h1 elements */
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: #FFA500; /* Light orange for icons */
+}
+
+footer a {
+    color: #FF4500; /* Darker orange for links */
+    text-decoration: none;
+}
